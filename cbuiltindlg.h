@@ -21,6 +21,8 @@ private:
     QPushButton *pagePushBtn;
     QPushButton *progressPushBtn;
     QPushButton *printPushBtn;
+    QPushButton *frontPushBtn;
+
 private slots:
     void doPushBtn();
 };
