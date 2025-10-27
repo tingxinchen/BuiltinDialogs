@@ -2,6 +2,8 @@
 #include <QGridLayout>
 #include <QColorDialog>
 #include <QPushButton>
+#include <QWidget>
+#include <QTextEdit>
 
 CBuiltinDlg::CBuiltinDlg(QWidget *parent)
     : QDialog(parent)
@@ -43,7 +45,7 @@ void CBuiltinDlg:: doPushBtn()
          this, QStringLiteral ("設定背景顏色"));
         if(color.isValid())
         {
-            palette.setColor(QPalette:: Base, color);
+            palette.setColor(QPalette::Base, color);
             displayTextEdit->setPalette (palette);
         }
     }
