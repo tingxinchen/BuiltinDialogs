@@ -1,5 +1,8 @@
 #include "cbuiltindlg.h"
 #include <QGridLayout>
+#include <QColorDialog>
+#include <QPushButton>
+
 CBuiltinDlg::CBuiltinDlg(QWidget *parent)
     : QDialog(parent)
 {
@@ -26,6 +29,24 @@ CBuiltinDlg::CBuiltinDlg(QWidget *parent)
     setLayout (gridLayout);
     setWindowTitle (QStringLiteral("內建對話盒展示"));
     resize (400,300);
+
+    connect(colorPushBtn,SIGNAL(clicked()),this,SLOT(doPushBtn()));
+}
+void CBuiltinDlg:: doPushBtn()
+{
+    QPushButton *btn=qobject_cast<QPushButton*>(sender());
+    if (btn == colorPushBtn)
+    {
+        QPalette palette=displayTextEdit->palette();
+        const QColor& color=
+        QColorDialog::getColor(palette.color (QPalette::Base),
+         this, QStringLiteral ("設定背景顏色"));
+        if(color.isValid())
+        {
+            palette.setColor(QPalette:: Base, color);
+            displayTextEdit->setPalette (palette);
+        }
+    }
 }
 
 CBuiltinDlg::~CBuiltinDlg() {}
